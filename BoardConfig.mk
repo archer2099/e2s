@@ -22,8 +22,24 @@ TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Bootloader
+BOARD_VENDOR := samsung
+TARGET_SOC := s5e9945
 TARGET_BOOTLOADER_BOARD_NAME := s5e9945
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+TARGET_USES_UEFI := true
+
+TARGET_USES_64_BIT_BINDER := true
+
+TARGET_CPU_SMP := true
+ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
+
+ALLOW_MISSING_DEPENDENCIES := true
+
+# File systems
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Display
 TARGET_SCREEN_DENSITY := 450
@@ -73,11 +89,19 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 # Platform
 TARGET_BOARD_PLATFORM := erd9945
 
+AB_OTA_UPDATER := false
+
+# System as root
+BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
@@ -99,26 +123,18 @@ TW_INCLUDE_CRYPTO_FBE := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
 BOARD_USES_METADATA_PARTITION := true
 
-# System as root
-BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm
-BOARD_SUPPRESS_SECURE_ERASE := true
-
-AB_OTA_UPDATER := false
-
 # PRODUCT_COPY_FILES directives.
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
 
 # TWRP specific build flags
-TW_DEVICE_VERSION := 0_test
+TW_DEVICE_VERSION := 0_Test
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 612
 TW_DEFAULT_BRIGHTNESS := 255
-TW_Y_OFFSET := 100
-TW_H_OFFSET := -100
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_NTFS_3G := true
@@ -131,3 +147,9 @@ TW_NO_LEGACY_PROPS := true
 TW_NO_BIND_SYSTEM := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_BACKUP_EXCLUSIONS := /data/fonts
+TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_RESETPROP := true
+TWRP_EVENT_LOGGING := true
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
