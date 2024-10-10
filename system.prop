@@ -1,6 +1,6 @@
 ro.display.series=Samsung S24+ 5G
 ro.product.board=s5e9945
-ro.board.platform=s5e9945
+ro.board.platform=erd9945
 sys.usb.controller=17900000.dwc3
 ro.boot.dynamic_partitions=true
 ro.boot.boot_devices=17100000.ufs
